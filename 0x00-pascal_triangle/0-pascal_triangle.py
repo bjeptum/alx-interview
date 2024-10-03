@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-"""Pascal triangle."""
-
-import math
+"""
+Pascal's Triangle
+"""
 
 
 def pascal_triangle(n):
@@ -14,13 +14,12 @@ def pascal_triangle(n):
     tri = []
 
     for row in range(n):
-        current_row = [1]  # First element is always 1
-
+        current_row = [1]
         if row > 0:
             for colum in range(1, row):
                 value = tri[row - 1][colum - 1] + tri[row - 1][colum]
                 current_row.append(value)
-            current_row.append(1)  # Last element is always 1
+            current_row.append(1)
 
         tri.append(current_row)
 
