@@ -1,16 +1,13 @@
 #!/usr/bin/python3
 """
-Pascal triangle
+Pascal triangle.
 """
 
 import math
 
 
 def pascal_triangle(n):
-    """
-    Returns a list of lists of integers
-    representing the PAscal's triangle of n
-    """
+    """Return a Pascal's triangle of n."""
     if not isinstance(n, int):
         raise TypeError("Input must be an integer.")
     if n <= 0:
