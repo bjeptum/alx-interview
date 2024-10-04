@@ -9,7 +9,7 @@ def pascal_triangle(n):
     if not isinstance(n, int):
         raise TypeError("Input must be an integer.")
     if n <= 0:
-        raise ValueError("Input must be a positive integer.")
+        return []
 
     tri = []
 
