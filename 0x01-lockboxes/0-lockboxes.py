@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """ Lockboxes Module."""
+
+
 def canUnlockAll(boxes):
     """ Determine if all boxes can be opened."""
     # Track unlocked boxes
