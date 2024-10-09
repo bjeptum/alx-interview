@@ -1,7 +1,7 @@
 #!/usr/bin/python3
+""" Lockboxes Module."""
 def canUnlockAll(boxes):
-    """ Determines if all boxes can be opened."""
-
+    """ Determine if all boxes can be opened."""
     # Track unlocked boxes
     unlocked = [False] * len(boxes)
     # Start with first block as unlocked
