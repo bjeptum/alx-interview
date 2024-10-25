@@ -8,7 +8,10 @@ from collections import defaultdict
 
 
 # Regex paatern for Apache log entries
-log_pattern = r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - \[(.*?)\] "GET /projects/260 HTTP/\d\.\d" (\d{3}) (\d+)'
+log_pattern = (
+        r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - \[(.*?)\] '
+        r'"GET /projects/260 HTTP/\d\.\d" (\d{3}) (\d+)'
+        )
 
 # initialization of metrics
 total_file_size = 0
