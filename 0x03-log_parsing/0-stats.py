@@ -21,7 +21,7 @@ line_count = 0
 
 def print_metrics(total_size, status_count):
     """Prints the total file size and status code counts."""
-    print(f"Total file size: {total_size}")
+    print(f"File size: {total_size}")
     for code in sorted(status_count.keys()):
         print(f"{code}: {status_count[code]}")
 
