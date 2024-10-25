@@ -8,7 +8,7 @@ from collections import defaultdict
 
 
 # Regex paatern for Apache log entries
-log_pattern = r'(\S+) - \[(.*?)\}"(\S+) (\S+) HTTP/\d\.\d" (\d{3}) (\d+)'
+log_pattern = r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - \[(.*?)\] "GET /projects/260 HTTP/\d\.\d" (\d{3}) (\d+)'
 
 # initialization of metrics
 total_file_size = 0
@@ -30,17 +30,17 @@ try:
 
         if match:
             # Parse the log entry using regex
-            status_code = math.group(5)
-            file_size = int(match.group(6))
+            status_code = match.group(3)
+            file_size = int(match.group(4))
 
             # Update metrics
             total_file_size += file_size
-            status_count[statu_code] += 1
+            status_count[status_code] += 1
             line_count += 1
 
             # Print metrics every 10 lines
             if line_count % 10 == 0:
-                print_metric(total_file_size, status_count)
+                print_metrics(total_file_size, status_count)
 
 except KeyboardInterrupt:
     print_metrics(total_file_size, status_count)
