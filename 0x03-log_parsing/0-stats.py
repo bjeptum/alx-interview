@@ -8,7 +8,7 @@ from collections import defaultdict
 
 
 # Regex pattern for Apache log entries
-log_pattern = (
+log_pattern = re.compile(
         r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - \[(.*?)\] '
         r'"GET /projects/260 HTTP/\d\.\d" (\d{3}) (\d+)'
         )
