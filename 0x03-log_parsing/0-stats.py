@@ -7,7 +7,7 @@ import sys
 from collections import defaultdict
 
 
-# Regex paatern for Apache log entries
+# Regex pattern for Apache log entries
 log_pattern = (
         r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - \[(.*?)\] '
         r'"GET /projects/260 HTTP/\d\.\d" (\d{3}) (\d+)'
@@ -23,7 +23,8 @@ def print_metrics(total_size, status_count):
     """Prints the total file size and status code counts."""
     print(f"File size: {total_size}")
     for code in sorted(status_count.keys()):
-        print(f"{code}: {status_count[code]}")
+        if code in {'200', '301', '400', '401', '403', '404', '405', '500'}:
+            print(f"{code}: {status_count[code]}")
 
 
 try:
@@ -46,4 +47,9 @@ try:
                 print_metrics(total_file_size, status_count)
 
 except KeyboardInterrupt:
+    print_metrics(total_file_size, status_count)
+
+
+# Print final metrics if there are remaining lines
+if line_count % 10 != 0:
     print_metrics(total_file_size, status_count)
