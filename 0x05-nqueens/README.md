@@ -6,7 +6,7 @@ This project entailed the classic N Queens problem in computer science and mathe
 
 Write a program that solves the N queens problem.
 
-Usage: nqueens N
+Usage: `nqueens N`
 
    - If the user called the program with the wrong number of arguments, print Usage: nqueens N, followed by a new line, and exit with the status 1
     
