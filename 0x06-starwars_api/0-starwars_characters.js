@@ -8,33 +8,38 @@ const movieId = process.argv[2];
 // Create URL to get data for the movie
 const url = `https://swapi.dev/api/films/${movieId}/`;
 
-// Make HTTP request to the API to fetch movie data
-request(url, function (error, response, body) {
-  // If there’s an error, print it
-  if (error) {
-    console.log('Error:', error);
-    return;
-  }
-  // If the request is successful get a valid movie response
-  if (response.statusCode === 200) {
-    // Convert response body into a JavaScript object
-    const movie = JSON.parse(body);
+// Function to make HTTP request to fetch data and return a promise
+function fetchData (url) {
+  return new Promise((resolve, reject) => {
+    request(url, function (error, response, body) {
+      if (error) {
+        reject(error);
+      } else if (response.statusCode === 200) {
+        resolve(JSON.parse(body));
+      } else {
+        reject(new Error('Failed to fetch data'));
+      }
+    });
+  });
+}
+
+async function printCharacters () {
+  try {
+    // Fetch movie data
+    const movie = await fetchData(url);
+
     // Get the list of character URLs from the movie data
     const characters = movie.characters;
 
-    // For each character URL, make a request to get the character's details
-    characters.forEach(characterUrl => {
-      request(characterUrl, function (error, response, body) {
-        if (error) {
-          console.log('Error:', error);
-        } else if (response.statusCode === 200) {
-          const character = JSON.parse(body);
-          console.log(character.name); // Print the character's name
-        }
-      });
-    });
-  } else {
-    // If the movie request fails, print an error message
-    console.log('Failed to fetch movie data');
+    // For each character URL, get character data and print their name in order
+    for (const characterUrl of characters) {
+      const character = await fetchData(characterUrl);
+      console.log(character.name); // Print the character's name
+    }
+  } catch (error) {
+    console.log('Error:', error);
   }
-});
+}
+
+// Run the function to print characters
+printCharacters();
