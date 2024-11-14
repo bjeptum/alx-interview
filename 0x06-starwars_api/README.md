@@ -1,7 +1,7 @@
 ## Star Wars Characters
 
 ### Project Overview
-The Star Wars Characters" project required me to interact with an external API to fetch and display information about Star Wars characters based on the movie ID provided as an argument. I used Node.js and the `request` module to fetch data from the Star Wars API and display character names.
+The Star Wars Characters project required me to interact with an external API to fetch and display information about Star Wars characters based on the movie ID provided as an argument. I used Node.js and the `request` module to fetch data from the Star Wars API and display character names.
 
 ### Requirements
 
@@ -36,12 +36,13 @@ The Star Wars Characters" project required me to interact with an external API t
 ```bash
 $ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 $ sudo apt-get install -y nodejs
+```
 
 2. Install semistandard for code formatting:
 
 ```bash
 $ sudo npm install semistandard --global
-
+```
 3. Install request module to make HTTP requests:
 
 ```
@@ -68,8 +69,11 @@ You must use the request module to fetch data
 Output:
 ```
 Luke Skywalker
+
 Han Solo
+
 Leia Organa
+
 ...
 ```
 
@@ -77,7 +81,7 @@ Solution
 
 1: Get the movie ID from the command-line argument (process.argv[2]).
 
-2: Use ID t o send a request to the Star Wars API and get data about the movie.
+2: Use ID to send a request to the Star Wars API and get data about the movie.
 
 3: With the movie data, grab the list of characters (which are URLs).
 
