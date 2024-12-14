@@ -8,6 +8,9 @@ def isWinner(x, nums):
     """
     Determines which player wins the most rounds in a game
     """
+    if x <= 0:
+        return x, nums
+
     MAX_N = 10000
     sieve = [True] * (MAX_N + 1)
     sieve[0] = sieve[1] = False
