@@ -26,7 +26,7 @@ def isWinner(x, nums):
     ben = 0
 
     for n in nums:
-        if n == 0:
+        if n <= 1:
             ben += 1
             continue
 
