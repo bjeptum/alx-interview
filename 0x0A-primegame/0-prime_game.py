@@ -9,7 +9,7 @@ def isWinner(x, nums):
     Determines which player wins the most rounds in a game
     """
     if x <= 0:
-        return x, nums
+        return None
 
     MAX_N = 10000
     sieve = [True] * (MAX_N + 1)
@@ -26,6 +26,10 @@ def isWinner(x, nums):
     ben = 0
 
     for n in nums:
+        if n == 0:
+            ben += 1
+            continue
+
         nums_set = set(range(1, n + 1))
 
         # Turn-based game simulation
